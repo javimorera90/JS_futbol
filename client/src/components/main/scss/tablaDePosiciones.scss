@@ -1,0 +1,17 @@
+.tablaPosiciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3{
+        margin: 10px;
+    }
+    table {
+        width: 90%;
+        text-align: center;
+        .team{
+            text-align: left;
+        }
+
+    }
+}
+
