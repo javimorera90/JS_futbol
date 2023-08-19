@@ -20,6 +20,7 @@ export const Start = () => {
     .get('http://localhost:4000/teams/getTeamsList')
     .then(
       (res)=>{setTeamList(res.data)},
+      console.log("BORRAR ESTE CONSOLE LOG")
       )
     .catch((err)=>{console.log(err)});
 
