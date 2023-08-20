@@ -1,14 +1,5 @@
-.principal {
+.cont-botones{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: calc(100vh - 16px);
-    div {
-        display: flex;
-        width: 30vw;
-        height: 45vh;
-        border: black 1px solid;
-    }
+    flex-direction: column;
+    gap: 20px;
 }

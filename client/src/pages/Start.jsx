@@ -9,19 +9,14 @@ export const Start = () => {
 
   const [selectedTeam, setSelectedTeam] = useState()
   const [teamList, setTeamList] = useState([])
-  const {user, setUser, actionReload, setActionReload} = useContext(JSFutbolContext);
+  const {user, setUser, actionReload, setActionReload, week, setWeek} = useContext(JSFutbolContext);
   const navigate = useNavigate();
-
-  localStorage.clear();
 
   useEffect(() => {
 
     axios
     .get('http://localhost:4000/teams/getTeamsList')
-    .then(
-      (res)=>{setTeamList(res.data)},
-      console.log("BORRAR ESTE CONSOLE LOG")
-      )
+    .then((res)=>{setTeamList(res.data)})
     .catch((err)=>{console.log(err)});
 
   }, [])
@@ -35,7 +30,7 @@ export const Start = () => {
   const aceptar = () =>{
     if(selectedTeam){
       setUser({...user, selectedTeam: selectedTeam})
-      setUser({...user, selectedTeam: selectedTeam})
+      setWeek(1)
       navigate('../main')
     } 
   }
