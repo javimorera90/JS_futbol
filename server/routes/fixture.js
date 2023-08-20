@@ -10,7 +10,7 @@ router.get('/round/:round_id', FixtureController.getRound);
 
 // 2. Trae los últimos 5 partidos del equipo
 // localhost:4000/fixture/lastMatches/:round_id
-router.get('/lastMatches/:round_id', FixtureController.getLastMatches);
+router.get('/lastMatches/:round_id/:team_id', FixtureController.getLastMatches);
 
 // 3. Trae los proximos 5 partidos del equipo
 // localhost:4000/fixture/nextMatches/:round_id/:team_id

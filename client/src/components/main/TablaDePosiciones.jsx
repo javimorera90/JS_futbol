@@ -21,7 +21,7 @@ export const TablaDePosiciones = () => {
     }, [])
     
   return (
-    <div className='tablaPosiciones'>
+    <div className='tablaPosiciones mt-5'>
         <Table variant="secondary" size="sm">
             <thead>
             <tr>
