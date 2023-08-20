@@ -10,7 +10,7 @@ export const ProximaFecha = () => {
 
   useEffect(() => {
     axios
-    .get(`http://localhost:4000/round/${week}`)
+    .get(`http://localhost:4000/fixture/round/${week}`)
     .then((res)=>{
       setNextRound(res.data);
     })

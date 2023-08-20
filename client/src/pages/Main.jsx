@@ -9,17 +9,12 @@ import { ProximoPartido } from '../components/main/ProximoPartido';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 export const Main = () => {
     
-  const {user, setUser, actionReload, setActionReload, week, setWeek} = useContext(JSFutbolContext);
-
-  useEffect(() => {
-    console.log(user)
-    console.log(week);
-  
-  }, [week])
-  
+  const {user, setUser, actionReload, setActionReload, week, setWeek} = useContext(JSFutbolContext); 
+  const navigate = useNavigate();
   
   console.log(user)
   console.log(week);
@@ -27,6 +22,10 @@ export const Main = () => {
   const jugarPartido = () => {
     localStorage.setItem("week", week + 1);
     setWeek(parseInt(localStorage.getItem("week")));
+  }
+
+  const volverAEmpezar = () => {
+    navigate('../start')
   }
 
   return (
@@ -47,8 +46,9 @@ export const Main = () => {
           <Col>
             <ProximoPartido/>
           </Col>
-          <Col>
+          <Col className='cont-botones col-4'>
             <Button onClick={jugarPartido}>Jugar partido</Button>
+            <Button className="boton" variant="outline-danger" onClick={volverAEmpezar}>Volver a empezar</Button>
           </Col>
         </Row>
     </>
