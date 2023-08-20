@@ -15,10 +15,7 @@ export const Main = () => {
     
   const {user, setUser, actionReload, setActionReload, week, setWeek} = useContext(JSFutbolContext); 
   const navigate = useNavigate();
-  
-  console.log(user)
-  console.log(week);
-  
+
   const jugarPartido = () => {
     localStorage.setItem("week", week + 1);
     setWeek(parseInt(localStorage.getItem("week")));
@@ -30,26 +27,21 @@ export const Main = () => {
 
   return (
     <>
-        <Row>
-          <Col>
+        <Row className="main-page">
+          <Col className="col-4">
             <TablaDePosiciones/>
-          </Col>
-          <Col>
-            <ProximaFecha/>
-          </Col>
-          <Col>
-            <ProximosPartidos/>
-            <UltimosPartidos/>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <ProximoPartido/>
-          </Col>
-          <Col className='cont-botones col-4'>
             <Button onClick={jugarPartido}>Jugar partido</Button>
             <Button className="boton" variant="outline-danger" onClick={volverAEmpezar}>Volver a empezar</Button>
           </Col>
+          <Col className="col-4">
+            <ProximaFecha/>
+            <ProximoPartido/>
+          </Col>
+          <Col className="col-4">
+            <ProximosPartidos/>
+            <UltimosPartidos/>
+          </Col>
+
         </Row>
     </>
   )

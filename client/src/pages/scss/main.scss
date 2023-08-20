@@ -1,5 +1,9 @@
-.cont-botones{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+
+.main-page{
+
+    .cont-botones{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 }
