@@ -9,6 +9,7 @@ var cors = require('cors');
 var teamsRouter = require('./routes/teams.js');
 var standingsRouter = require('./routes/standings.js');
 var fixtureRouter = require('./routes/fixture.js');
+var matchRouter = require('./routes/match.js');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/teams', teamsRouter);
 app.use('/standings', standingsRouter);
 app.use('/fixture', fixtureRouter);
+app.use('/match', matchRouter);
 
 
 module.exports = app;

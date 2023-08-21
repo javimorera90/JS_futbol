@@ -22,7 +22,7 @@ class FixtureController {
         });
     };
 
-    // 3. Trae los proximos 5 partidos del equipo
+    // 2. Trae los últimos 5 partidos del equipo
     // localhost:4000/fixture/nextMatches/:round_id/:team_id
     getLastMatches = (req, res) => {
         
@@ -63,6 +63,29 @@ class FixtureController {
         AND round >= ${req.params.round_id}
         ORDER BY round ASC
         LIMIT 5`
+
+       connection.query(sql, (error, result) => {
+            error
+            ? res.status(400).json({error})
+            : res.status(200).json(result);
+        });
+    };
+
+    // 4. Trae el próximo partido del equipo
+    // localhost:4000/fixture/nextMatch/:round_id/:team_id
+    getNextMatch = (req, res) => {
+        
+        let sql = `SELECT DISTINCT fixture.round, 
+        (SELECT team_name FROM team WHERE team_id = fixture.home_team) AS home_team_name,
+        fixture.home_team AS home_team_id,
+        (SELECT logo FROM team WHERE team_id = fixture.home_team) AS home_team_logo,
+        (SELECT team_name FROM team WHERE team_id = fixture.away_team) AS away_team_name,
+		fixture.away_team AS away_team_id,
+        (SELECT logo FROM team WHERE team_id = fixture.away_team) AS away_team_logo
+        FROM fixture, team 
+        WHERE (fixture.home_team = ${req.params.team_id}
+        OR fixture.away_team = ${req.params.team_id})
+        AND round = ${req.params.round_id}`
 
        connection.query(sql, (error, result) => {
             error

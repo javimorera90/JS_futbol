@@ -16,5 +16,9 @@ router.get('/lastMatches/:round_id/:team_id', FixtureController.getLastMatches);
 // localhost:4000/fixture/nextMatches/:round_id/:team_id
 router.get('/nextMatches/:round_id/:team_id', FixtureController.getNextMatches);
 
+// 4. Trae el próximo partido del equipo
+// localhost:4000/fixture/nextMatch/:round_id/:team_id
+router.get('/nextMatch/:round_id/:team_id', FixtureController.getNextMatch);
+
 
 module.exports = router;

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export const ProximaFecha = () => {
   
-  const {user, setUser, actionReload, setActionReload, week} = useContext(JSFutbolContext);
+  const {user, week} = useContext(JSFutbolContext);
   const [nextRound, setNextRound] = useState()
 
   useEffect(() => {

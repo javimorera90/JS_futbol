@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import './scss/main.scss'
-import { JSFutbolContext } from '../context/JSFutbolContext';
 import { ProximaFecha } from '../components/main/ProximaFecha';
 import { TablaDePosiciones } from '../components/main/TablaDePosiciones';
 import { ProximosPartidos } from '../components/main/ProximosPartidos';
@@ -8,30 +7,20 @@ import { UltimosPartidos } from '../components/main/UltimosPartidos';
 import { ProximoPartido } from '../components/main/ProximoPartido';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
+import { BotonJugarPartido } from '../components/main/BotonJugarPartido';
+import { BotonReiniciar } from '../components/main/BotonReiniciar';
 
 export const Main = () => {
     
-  const {user, setUser, actionReload, setActionReload, week, setWeek} = useContext(JSFutbolContext); 
-  const navigate = useNavigate();
-
-  const jugarPartido = () => {
-    localStorage.setItem("week", week + 1);
-    setWeek(parseInt(localStorage.getItem("week")));
-  }
-
-  const volverAEmpezar = () => {
-    navigate('../start')
-  }
-
   return (
     <>
         <Row className="main-page">
-          <Col className="col-4">
+          <Col className="col-4 d-flex flex-column align-items-center">
             <TablaDePosiciones/>
-            <Button onClick={jugarPartido}>Jugar partido</Button>
-            <Button className="boton" variant="outline-danger" onClick={volverAEmpezar}>Volver a empezar</Button>
+            <div className='cont-botones d-flex flex-column mt-4'>
+              <BotonJugarPartido/>
+              <BotonReiniciar/>
+            </div>
           </Col>
           <Col className="col-4">
             <ProximaFecha/>
